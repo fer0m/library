@@ -1,0 +1,44 @@
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css"/>
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
+
+<head>
+    <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+        <p class="uk-text-large uk-text-center">E-Bibliothek</p>
+        <div class="uk-width-Large uk-align-center">
+
+            <table class="uk-table uk-table-divider uk-table-hover">
+                <tr>
+                    <th class="uk-width-auto uk-text-middle">Name</th>
+                    <th class="uk-width-auto uk-text-middle">{{book_info.book_name}}</th>
+                </tr>
+                <tr>
+                    <th class="uk-width-auto uk-text-middle">Author</th>
+                    <th class="uk-width-auto uk-text-middle">{{book_info.author_name}}</th>
+                </tr>
+                <tr>
+                    <th class="uk-width-auto uk-text-middle">Status</th>
+                    <th class="uk-width-auto uk-text-middle">
+                        {% if book_info.is_free%}
+                            <i class="uk-icon-medium" uk-icon="check"> FREE </i>
+                        {% else %}
+                            <i class="uk-icon-medium" uk-icon="close"> BOOKED </i>
+                        {% endif %}
+                    </th>
+                </tr>
+
+            </table>
+
+            <a class="uk-align-left uk-button uk-button-default" href="{% url 'main' %}">Go back</a>
+            <a class="uk-align-right uk-button uk-button-default" href="#">Take it</a>
+
+        </div>
+    </div>
+</head>
+<body>
+
+</body>
+</html>
