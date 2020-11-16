@@ -21,4 +21,6 @@ def book_info(request, book_id):
     else:
         reserve_user_name = "free"
 
-    return render(request, 'library/detail.html', {'book_info': book_object, 'reserve_user_name':reserve_user_name})
+    print(book_object.__dict__)
+
+    return render(request, 'library/detail.html', {'book_info': book_object, 'reserve_user_name': reserve_user_name})
