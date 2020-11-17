@@ -21,6 +21,14 @@ def book_info(request, book_id):
     else:
         reserve_user_name = "free"
 
-    print(book_object.__dict__)
-
     return render(request, 'library/detail.html', {'book_info': book_object, 'reserve_user_name': reserve_user_name})
+
+
+def search_book(request):
+    query = request.GET.get('q')
+    book_list = Book.objects.filter(book_name__icontains=query)
+    paginator = Paginator(book_list, 15)
+    page_number = request.GET.get('page')
+
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'library/search.html', {'page_obj': page_obj, 'search_string': query})
