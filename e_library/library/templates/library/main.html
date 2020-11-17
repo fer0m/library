@@ -31,56 +31,66 @@
             </table>
         </div>
 
-        <ul class="uk-pagination uk-margin">
-            {% if page_obj.has_previous %}
-            <li>
-                <a href="?page={{ page_obj.previous_page_number }}">
-                    <span uk-pagination-previous></span>
-                </a>
-            </li>
-            {% endif %}
+        <div class="uk-clearfix">
+            <!--PAGINATOR-->
+            <div class="uk-float-left">
+                <ul class="uk-pagination uk-margin">
+                    {% if page_obj.has_previous %}
+                    <li>
+                        <a href="?page={{ page_obj.previous_page_number }}">
+                            <span uk-pagination-previous></span>
+                        </a>
+                    </li>
+                    {% endif %}
 
-            {% if page_obj.number == 1 %}
-            <li>
-                <a class="uk-text-bold" href="?page=1">1</a>
-            </li>
-            {% else %}
-            <li>
-                <a href="?page=1">1</a>
-            </li>
-            {% endif %}
+                    {% if page_obj.number == 1 %}
+                    <li>
+                        <a class="uk-text-bold" href="?page=1">1</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="?page=1">1</a>
+                    </li>
+                    {% endif %}
 
-            {% if page_obj.number != 1 and page_obj.number != page_obj.paginator.num_pages %}
-            <li>
-                <a class="uk-text-bold" href="?page={{ page_obj.paginator.num_pages }}">
-                    {{ page_obj.number }}
-                </a>
-            </li>
-            {% endif %}
+                    {% if page_obj.number != 1 and page_obj.number != page_obj.paginator.num_pages %}
+                    <li>
+                        <a class="uk-text-bold" href="?page={{ page_obj.paginator.num_pages }}">
+                            {{ page_obj.number }}
+                        </a>
+                    </li>
+                    {% endif %}
 
-            {% if page_obj.number == page_obj.paginator.num_pages %}
-            <li>
-                <a class="uk-text-bold" href="?page={{ page_obj.paginator.num_pages }}">
-                    {{ page_obj.paginator.num_pages }}
-                </a>
-            </li>
-            {% else %}
-            <li>
-                <a href="?page={{ page_obj.paginator.num_pages }}">
-                    {{ page_obj.paginator.num_pages }}
-                </a>
-            </li>
-            {% endif %}
+                    {% if page_obj.number == page_obj.paginator.num_pages %}
+                    <li>
+                        <a class="uk-text-bold" href="?page={{ page_obj.paginator.num_pages }}">
+                            {{ page_obj.paginator.num_pages }}
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">
+                            {{ page_obj.paginator.num_pages }}
+                        </a>
+                    </li>
+                    {% endif %}
 
-            {% if page_obj.has_next %}
-            <li>
-                <a href="?page={{ page_obj.next_page_number }}">
-                    <span uk-pagination-next></span>
-                </a>
-            </li>
-            {% endif %}
-        </ul>
+                    {% if page_obj.has_next %}
+                    <li>
+                        <a href="?page={{ page_obj.next_page_number }}">
+                            <span uk-pagination-next></span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!--SEARCH FORM-->
+            <div class="uk-float-right">
+                <form class="uk-margin" action="{% url 'search' %}" method="get">
+                    <input class="uk-input uk-form-width-medium uk-form-small" name="q" type="text" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+
     </div>
 </head>
-
-
